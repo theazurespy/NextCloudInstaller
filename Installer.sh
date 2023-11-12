@@ -34,4 +34,4 @@ GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost';
 FLUSH PRIVILEGES;
 EXIT
 EOF
-eboot
+reboot
