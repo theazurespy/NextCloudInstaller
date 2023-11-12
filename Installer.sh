@@ -22,13 +22,16 @@ wget https://download.nextcloud.com/server/releases/latest.zip -P /tmp
 unzip /tmp/latest.zip -d /var/www/html/
 chown -R www-data:www-data /var/www/html/nextcloud
 
-# Set up MySQL for Nextcloud
-mysql <<EOF
+# Prompt user for MySQL password
+read -s -p "Enter MySQL password for 'nextcloud' user: " mysql_password
+echo
+
+# Set up MySQL for Nextcloud using the --password option
+mysql --user=root --password=$mysql_password <<EOF
 CREATE DATABASE nextcloud;
-CREATE USER 'nextcloud'@'localhost' IDENTIFIED BY 'password';
+CREATE USER 'nextcloud'@'localhost' IDENTIFIED BY '$mysql_password';
 GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost';
 FLUSH PRIVILEGES;
 EXIT
 EOF
-
-reboot
+eboot
