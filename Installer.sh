@@ -39,4 +39,3 @@ GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost';
 FLUSH PRIVILEGES;
 EXIT
 EOF
-echo "Success! Nextcloud is located at /var/www/html"
