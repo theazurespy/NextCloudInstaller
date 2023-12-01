@@ -25,18 +25,18 @@ systemctl restart apache2
 
 # Download and extract Nextcloud
 echo "Pulling the latest version of Nextcloud"
-wget https://download.nextcloud.com/server/releases/latest.zip -P /tmp
-unzip /tmp/latest.zip -d /var/www/html/
+#wget https://download.nextcloud.com/server/releases/latest.zip -P /tmp
+#unzip /tmp/latest.zip -d /var/www/html/
 chown -R www-data:www-data /var/www/html/
 
 # Set up MySQL for Nextcloud using the --password option, provided by the user.
 echo "Setting up the database for Nextcloud"
 read -s -p "Enter MySQL password for 'nextcloud' user: " mysql_password
-mysql --host=localhost --user=root --password=$mysql_password << END
-CREATE DATABASE IF NOT EXISTS nextcloud;
-CREATE USER 'nextcloud'@'localhost' IDENTIFIED BY '$mysql_password';
-GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost';
-FLUSH PRIVILEGES;
+mysql --host=localhost --user=root --password=$mysql_password <<- END
+  CREATE DATABASE IF NOT EXISTS nextcloud;
+  CREATE USER 'nextcloud'@'localhost' IDENTIFIED BY '$mysql_password';
+  GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost';
+  FLUSH PRIVILEGES;
 END
 
 echo "Success! Nextcloud is located at /var/www/html"
