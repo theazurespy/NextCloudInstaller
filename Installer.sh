@@ -32,10 +32,11 @@ chown -R www-data:www-data /var/www/html/
 # Set up MySQL for Nextcloud using the --password option, provided by the user.
 echo "Setting up the database for Nextcloud"
 read -s -p "Enter MySQL password for 'nextcloud' user: " mysql_password
-mysql --user=root --password=$mysql_password <<EOF
-CREATE DATABASE nextcloud;
+mysql --host=localhost --user=root --password=$mysql_password << END
+CREATE DATABASE IF NOT EXISTS nextcloud;
 CREATE USER 'nextcloud'@'localhost' IDENTIFIED BY '$mysql_password';
 GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost';
 FLUSH PRIVILEGES;
-EXIT
-EOF
+END
+
+echo "Success! Nextcloud is located at /var/www/html"
