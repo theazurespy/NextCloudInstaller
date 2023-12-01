@@ -27,7 +27,7 @@ systemctl restart apache2
 echo "Pulling the latest version of Nextcloud"
 wget https://download.nextcloud.com/server/releases/latest.zip -P /tmp
 unzip /tmp/latest.zip -d /var/www/html/
-chown -R www-data:www-data /var/www/html/nextcloud
+chown -R www-data:www-data /var/www/html/
 
 # Prompt user for MySQL password
 #read -s -p "Enter MySQL password for 'nextcloud' user: " mysql_password
