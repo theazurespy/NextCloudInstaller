@@ -30,12 +30,12 @@ unzip /tmp/latest.zip -d /var/www/html/
 chown -R www-data:www-data /var/www/html/nextcloud
 
 # Prompt user for MySQL password
-read -s -p "Enter MySQL password for 'nextcloud' user: " mysql_password
-echo
+#read -s -p "Enter MySQL password for 'nextcloud' user: " mysql_password
+#echo
 
 # Set up MySQL for Nextcloud using the --password option
 echo "Setting up the database for Nextcloud"
-mysql --user=root --password=$mysql_password <<EOF
+mysql --user=root --password=$(read -s -p "Enter MySQL password for 'nextcloud' user:) <<EOF
 CREATE DATABASE nextcloud;
 CREATE USER 'nextcloud'@'localhost' IDENTIFIED BY '$mysql_password';
 GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost';
