@@ -17,7 +17,7 @@ apt update && sudo apt upgrade -y
 
 # Install required packages
 echo "Installing pre-reqs"
-apt install -y apache2 mariadb-server libapache2-mod-php php-gd php-json php-mysql php-curl php-mbstring php-intl php-imagick php-xml php-zip
+apt install -y apache2 mariadb-server libapache2-mod-php php-gd php-json php-mysql php-curl php-mbstring php-intl php-imagick php-xml php-zip unzip
 
 # Restart Apache
 echo "Restarting the Apache service"
