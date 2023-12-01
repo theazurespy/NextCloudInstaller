@@ -1,6 +1,6 @@
 #!/bin/bash
 # Enable basic error debugging
-PS4='+${LINENO}: '
+PS4='LINENO:'
 set -x
 
 # Basic Nextcloud installer for Raspberry Pi
